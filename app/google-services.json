@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "740869491475",
+    "project_id": "cm-tp-wtd",
+    "storage_bucket": "cm-tp-wtd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740869491475:android:a094293c53aa542789a8e6",
+        "android_client_info": {
+          "package_name": "intro.android.cm_tp_wtd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2Co2sIYnyYr0T4hwH3z1fXBFnwMakc9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
