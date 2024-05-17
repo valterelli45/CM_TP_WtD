@@ -2,4 +2,5 @@
 <resources>
     <item name="passwordEditText" type="id" />
     <item name="emailEditText" type="id" />
+    <item name="contentArea" type="id" />
 </resources>
