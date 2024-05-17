@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Login bem-sucedido, atualize a interface do usuário com as informações do usuário conectado
                         Log.d(TAG, "signInWithEmail: success")
-                        adicionarDocumento() // Após o login, adicione o documento
+                        //adicionarDocumento() // Após o login, adicione o documento
+                        //excluirDados()
                     } else {
                         // Se falhar, exiba uma mensagem de erro
                         Toast.makeText(
@@ -49,9 +50,6 @@ class MainActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-        } else {
-            // Se houver um usuário atual, adicione o documento
-            //excluirDados()
         }
     }
 
