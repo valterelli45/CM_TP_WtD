@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 }
         } else {
             // Se houver um usuário atual, adicione o documento
-            //adicionarDocumento()
             //excluirDados()
         }
     }
