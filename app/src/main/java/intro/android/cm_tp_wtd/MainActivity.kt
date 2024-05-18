@@ -3,7 +3,6 @@ package intro.android.cm_tp_wtd
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import intro.android.cm_tp_wtd.fragments.loginFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,13 +43,6 @@ class MainActivity : AppCompatActivity() {
                         Log.d(TAG, "signInWithEmail: success")
                         //adicionarDocumento() // Após o login, adicione o documento
                         //excluirDados()
-                        val loginButton: Button = findViewById(R.id.loginButton)
-                        loginButton.setOnClickListener {
-                            supportFragmentManager.beginTransaction()
-                                .replace(R.id.fragment_container, loginFragment())
-                                .addToBackStack(null)
-                                .commit()
-                        }
                     } else {
                         // Se falhar, exiba uma mensagem de erro
                         Toast.makeText(
