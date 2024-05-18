@@ -16,11 +16,20 @@
     </fragment>
 
     <fragment
+        android:id="@+id/registerFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.registerFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/activity_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@+id/loginFragment"/>
+    </fragment>
+
+    <fragment
         android:id="@+id/dashboardFragment"
         android:name="intro.android.cm_tp_wtd.fragments.dashboardFragment"
         android:label="fragment_dashboard"
         tools:layout="@layout/activity_dashboard">
-        <action/>
     </fragment>
 
     <fragment
