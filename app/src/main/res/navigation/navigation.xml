@@ -19,10 +19,13 @@
         android:id="@+id/loginFragment"
         android:name="intro.android.cm_tp_wtd.fragments.loginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/activity_login">
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_dashboardFragment"
             app:destination="@+id/dashboardFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@+id/mainFragment"/>
     </fragment>
 
     <fragment

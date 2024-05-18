@@ -14,10 +14,10 @@ class mainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.activity_main, container, false)
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        val button:Button = view.findViewById(R.id.loginButton)
-        button.setOnClickListener(){
+        val loginButton = view.findViewById<Button>(R.id.loginButton)
+        loginButton.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         }
 
