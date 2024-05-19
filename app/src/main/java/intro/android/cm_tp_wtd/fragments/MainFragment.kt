@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import intro.android.cm_tp_wtd.R
@@ -22,7 +23,7 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
         }
 
-        val createAccountButton = view.findViewById<ImageView>(R.id.createAccountButton)
+        val createAccountButton = view.findViewById<TextView>(R.id.createAccountButton)
         createAccountButton.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_registerFragment)
         }
