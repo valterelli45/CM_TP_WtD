@@ -7,17 +7,20 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="intro.android.cm_tp_wtd.fragments.mainFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@+id/loginFragment"/>
+        <action
+            android:id="@+id/action_mainFragment_to_registerFragment"
+            app:destination="@+id/registerFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="intro.android.cm_tp_wtd.fragments.loginFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -26,23 +29,32 @@
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@+id/mainFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@+id/registerFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="intro.android.cm_tp_wtd.fragments.registerFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/activity_register">
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@+id/loginFragment"/>
+        <action
+            android:id="@+id/action_registerFragment_to_mainFragment"
+            app:destination="@+id/mainFragment"/>
     </fragment>
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="intro.android.cm_tp_wtd.fragments.dashboardFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/activity_dashboard">
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_mainFragment"
+            app:destination="@+id/mainFragment"/>
     </fragment>
 
     <fragment
