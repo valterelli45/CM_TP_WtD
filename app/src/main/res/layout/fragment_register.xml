@@ -67,13 +67,13 @@
         android:id="@+id/signupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="@android:color/holo_blue_light"
         android:text="Sign Up"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/confirmPasswordEditText"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordEditText" />
 
     <TextView
         android:id="@+id/alreadyHaveAccountText"

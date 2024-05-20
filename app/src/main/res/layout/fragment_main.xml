@@ -8,16 +8,16 @@
 
     <ImageView
         android:id="@+id/topImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="436dp"
+        android:layout_height="916dp"
         android:scaleType="centerCrop"
         android:src="@drawable/background_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/loginButton"
@@ -39,7 +39,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:text="Don’t have an account?"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
@@ -51,7 +51,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
         android:text="Create an account!"
-        android:textColor="@android:color/black"
+        android:textColor="@color/white"
         android:textSize="19sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/noAccountText" />
@@ -63,6 +63,7 @@
         android:fontFamily="@font/alfa_slab_one"
         android:lineSpacingExtra="6sp"
         android:text="Explore the World with What to do."
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
