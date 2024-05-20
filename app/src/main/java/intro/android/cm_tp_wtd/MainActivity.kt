@@ -2,20 +2,16 @@ package intro.android.cm_tp_wtd
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    private val db = Firebase.firestore
-    private lateinit var auth: FirebaseAuth
+    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,35 +23,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
-        // Inicialize o Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        val email = "valter07082001@gmail.com"
-        val password = "1epca92a"
-
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            // Se não houver usuário atual, faça o login com o email e a senha
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Login bem-sucedido, atualize a interface do usuário com as informações do usuário conectado
-                        Log.d(TAG, "signInWithEmail: success")
-                        //adicionarDocumento() // Após o login, adicione o documento
-                        //excluirDados()
-                    } else {
-                        // Se falhar, exiba uma mensagem de erro
-                        Toast.makeText(
-                            baseContext,
-                            "Falha na autenticação.",
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                    }
-                }
-        }
     }
 
-    private fun adicionarDocumento() {
+    /*private fun adicionarDocumento() {
         val data = hashMapOf(
             "nome" to "João",
             "idade" to 30
@@ -93,9 +63,5 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Nenhum usuário conectado", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    companion object {
-        private const val TAG = "MainActivity"
-    }
+    }*/
 }
