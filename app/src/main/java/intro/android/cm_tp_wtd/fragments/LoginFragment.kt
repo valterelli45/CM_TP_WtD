@@ -52,10 +52,26 @@ class LoginFragment: Fragment() {
                         if (task.isSuccessful) {
                             // Login bem-sucedido, atualize a interface do usuário com as informações do usuário conectado
                             Log.d(TAG, "signInWithEmail: success")
-                            //adicionarDocumento() // Após o login, adicione o documento
-                            //excluirDados()
                             val user = auth.currentUser
-                            findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
+                            val uid = user?.uid
+
+                            // Recuperar documento do Firestore com o UID como ID do documento
+                            uid?.let {
+                                db.collection("users").document(it)
+                                    .get()
+                                    .addOnSuccessListener { document ->
+                                        if (document != null) {
+                                            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                                            // Utilize os dados do documento conforme necessário
+                                            findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
+                                        } else {
+                                            Log.d(TAG, "No such document")
+                                        }
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Log.w(TAG, "Error getting document", e)
+                                    }
+                            }
                         } else {
                             // Se falhar, exiba uma mensagem de erro
                             Toast.makeText(
@@ -69,7 +85,6 @@ class LoginFragment: Fragment() {
                 Toast.makeText(requireContext(), "Please enter email and password.", Toast.LENGTH_SHORT).show()
             }
         }
-
         return view
     }
 }
