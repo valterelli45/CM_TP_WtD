@@ -57,17 +57,38 @@ class RegisterFragment : Fragment() {
                             .addOnCompleteListener(requireActivity()) { task ->
                                 if (task.isSuccessful) {
                                     Log.d(TAG, "createUserWithEmail: success")
-                                    // Clear text fields
-                                    emailEditText.text.clear()
-                                    passwordEditText.text.clear()
-                                    confirmPasswordEditText.text.clear()
                                     val user = auth.currentUser
-                                    findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
+                                    val uid = user?.uid
+                                    val userDoc = hashMapOf(
+                                        "email" to email,
+                                        "password" to password
+                                    )
+                                    // Adicionar documento ao Firestore com o UID como ID do documento
+                                    uid?.let {
+                                        db.collection("users").document(it)
+                                            .set(userDoc)
+                                            .addOnSuccessListener {
+                                                Log.d(TAG, "User document successfully written!")
+                                                // Clear text fields
+                                                emailEditText.text.clear()
+                                                passwordEditText.text.clear()
+                                                confirmPasswordEditText.text.clear()
+                                                findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
+                                            }
+                                            .addOnFailureListener { e ->
+                                                Log.w(TAG, "Error writing user document", e)
+                                                Toast.makeText(
+                                                    requireContext(),
+                                                    "Erro ao salvar os dados do usuário.",
+                                                    Toast.LENGTH_SHORT,
+                                                ).show()
+                                            }
+                                    }
                                 } else {
                                     val exceptionMessage = task.exception?.message
                                     Toast.makeText(
                                         requireContext(),
-                                        "Authentication failed: $exceptionMessage",
+                                        "Falha na autenticação: $exceptionMessage",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
