@@ -38,7 +38,7 @@
         android:id="@+id/noAccountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="50dp"
         android:text="Don’t have an account?"
         android:textColor="@color/white"
         android:textSize="12sp"
@@ -71,10 +71,9 @@
         android:textColor="#FFFFFF"
         android:textSize="48sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/topImage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
