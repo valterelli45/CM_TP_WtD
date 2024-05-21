@@ -8,68 +8,73 @@
 
     <ImageView
         android:id="@+id/topImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="436dp"
+        android:layout_height="916dp"
         android:scaleType="centerCrop"
         android:src="@drawable/background_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="160dp"
         android:layout_height="64dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="580dp"
         android:backgroundTint="@android:color/holo_blue_light"
         android:text="Login"
         android:textColor="@android:color/white"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.864" />
 
     <TextView
         android:id="@+id/noAccountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="48dp"
         android:text="Don’t have an account?"
-        android:textColor="@android:color/black"
-        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/createAccountButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
         android:text="Create an account!"
-        android:textColor="@android:color/black"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noAccountText" />
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toEndOf="@+id/noAccountText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="233dp"
-        android:layout_height="151dp"
+        android:layout_width="315dp"
+        android:layout_height="222dp"
         android:fontFamily="@font/alfa_slab_one"
         android:lineSpacingExtra="6sp"
         android:text="Explore the World with What to do."
-        android:textSize="34sp"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintBottom_toBottomOf="@+id/topImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.779" />
+        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
