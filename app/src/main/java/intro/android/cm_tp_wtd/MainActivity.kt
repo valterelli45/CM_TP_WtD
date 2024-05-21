@@ -24,44 +24,4 @@ class MainActivity : AppCompatActivity() {
         }
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
-
-    /*private fun adicionarDocumento() {
-        val data = hashMapOf(
-            "nome" to "João",
-            "idade" to 30
-        )
-
-        db.collection("usuarios")
-            .add(data)
-            .addOnSuccessListener {
-                Toast.makeText(this,"Adicionado com sucesso", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this,"Falha ao adicionar", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    private fun excluirDados() {
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            db.collection("usuarios")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        document.reference.delete()
-                            .addOnSuccessListener {
-                                Log.d(TAG, "Documento excluído com sucesso: ${document.id}")
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Falha ao excluir documento: ${document.id}", e)
-                            }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.w(TAG, "Falha ao obter documentos", exception)
-                }
-        } else {
-            Toast.makeText(this, "Nenhum usuário conectado", Toast.LENGTH_SHORT).show()
-        }
-    }*/
 }
