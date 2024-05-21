@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">CM_TP_WtD</string>
     <string name="back_button">Go Back</string>
-    <string name="menu_icon" />
     <string name="profile_icon">Profile</string>
     <string name="nav_icon_left">Navleft</string>
     <string name="nav_button_center">AddTrip</string>
     <string name="nav_icon_right">NavRight</string>
+    <string name="menu_icon">Menu Icon</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_profile_picture">Edit Profile Picture</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="save">Save</string>
 </resources>
