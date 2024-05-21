@@ -40,6 +40,7 @@ class ProfileFragment: Fragment() {
 
         val currentUser = auth.currentUser
 
+        val profileIcon = view.findViewById<ImageView>(R.id.profileIcon)
         val profilePicture = view.findViewById<ImageView>(R.id.profilePicture)
         val editProfilePictureButton = view.findViewById<Button>(R.id.editProfilePictureButton)
         val nameEditText = view.findViewById<EditText>(R.id.nameEditText)
@@ -61,6 +62,9 @@ class ProfileFragment: Fragment() {
                         Glide.with(this)
                             .load(profileImageUrl)
                             .into(profilePicture)
+                        Glide.with(this)
+                            .load(profileImageUrl)
+                            .into(profileIcon)
                     }
                 } else {
                     Toast.makeText(requireContext(), "No user data found", Toast.LENGTH_SHORT).show()
