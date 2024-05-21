@@ -44,7 +44,7 @@ class ProfileFragment: Fragment() {
         val editProfilePictureButton = view.findViewById<Button>(R.id.editProfilePictureButton)
         val nameEditText = view.findViewById<EditText>(R.id.nameEditText)
         val usernameEditText = view.findViewById<EditText>(R.id.usernameEditText)
-        val emailText = view.findViewById<TextView>(R.id.emailEditText)
+        val emailText = view.findViewById<TextView>(R.id.emailText)
         val saveButton = view.findViewById<Button>(R.id.saveButton)
         val changePasswordButton = view.findViewById<Button>(R.id.changePasswordButton)
 
