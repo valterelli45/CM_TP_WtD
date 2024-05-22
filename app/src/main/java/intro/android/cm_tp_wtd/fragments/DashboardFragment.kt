@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -27,6 +28,11 @@ class DashboardFragment: Fragment() {
         val currentUser = auth.currentUser
 
         val profileButton = view.findViewById<ImageView>(R.id.profileIcon)
+        val addtripButton = view.findViewById<Button>(R.id.addTripButton)
+        addtripButton.setOnClickListener{
+            val dialog = AddTripFragment()
+            dialog.show(childFragmentManager, "AddTripDialogFragment")
+        }
 
         // Carregar dados do usuário
         currentUser?.uid?.let { uid ->

@@ -126,9 +126,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun checkAndRequestPermissions(): Boolean {
-        val permissions = arrayOf(
-            android.Manifest.permission.READ_MEDIA_IMAGES
-        )
+        val permissions = arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES)
         val permissionsNeeded = permissions.filter {
             ContextCompat.checkSelfPermission(requireContext(), it) != PackageManager.PERMISSION_GRANTED
         }
@@ -143,7 +141,7 @@ class ProfileFragment: Fragment() {
     // Fazer upload da imagem para o Firestore
     private fun uploadImageToFirestore(imageUri: Uri) {
         val storageRef = FirebaseStorage.getInstance().reference
-        val imageRef = storageRef.child("images/${auth.currentUser?.uid}/${UUID.randomUUID()}")
+        val imageRef = storageRef.child("images/${auth.currentUser?.uid}/profileImage/${UUID.randomUUID()}")
         val uploadTask = imageRef.putFile(imageUri)
         val currentUser = auth.currentUser
 

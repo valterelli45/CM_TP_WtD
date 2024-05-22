@@ -72,4 +72,11 @@
             android:id="@+id/action_profileFragment_to_dashboardFragment"
             app:destination="@+id/dashboardFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/tripsListFragment"
+        android:name="intro.android.cm_tp_wtd.fragments.TripsListFragment"
+        android:label="fragment_tripslist"
+        tools:layout="@layout/fragment_tripslist" />
+
 </navigation>

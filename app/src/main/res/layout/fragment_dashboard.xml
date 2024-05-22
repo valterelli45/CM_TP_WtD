@@ -31,11 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Main content area -->
-
-    <!-- Bottom navigation bar -->
-
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/contentArea"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,10 +40,10 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/menuIcon"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:navGraph="@navigation/navigation" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomNavBar"
@@ -73,7 +69,7 @@
 
         <!-- Center button in bottom nav -->
         <Button
-            android:id="@+id/navButtonCenter"
+            android:id="@+id/addTripButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_add"
