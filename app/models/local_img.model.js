@@ -4,6 +4,8 @@ const sql = require("./db.js");
 const LocalImg = function(localImg) {
   this.local_id = localImg.local_id;
   this.image_url = localImg.image_url;
+  this.desc_img = localImg.desc_img;
+  this.data_inserted = localImg.data_inserted;
 };
 
 LocalImg.create = (newLocalImg, result) => {
@@ -52,8 +54,8 @@ LocalImg.getAll = (result) => {
 
 LocalImg.updateById = (id, localImg, result) => {
   sql.query(
-    "UPDATE locals_img SET local_id = ?, image_url = ? WHERE id = ?",
-    [localImg.local_id, localImg.image_url, id],
+    "UPDATE locals_img SET local_id = ?, image_url = ?, desc_img = ?, data_inserted = ? WHERE id = ?",
+    [localImg.local_id, localImg.image_url, localImg.desc_img, localImg.data_inserted, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

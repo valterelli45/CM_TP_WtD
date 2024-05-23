@@ -12,7 +12,8 @@ exports.create = (req, res) => {
   // Create a UserTrip
   const userTrip = new UserTrip({
     user_id: req.body.user_id,
-    trip_id: req.body.trip_id
+    trip_id: req.body.trip_id,
+    main_user: req.body.main_user
   });
 
   // Save UserTrip in the database

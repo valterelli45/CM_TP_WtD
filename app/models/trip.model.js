@@ -2,9 +2,12 @@ const sql = require("./db.js");
 
 // constructor
 const Trip = function(trip) {
-  this.name = trip.name;
-  this.description = trip.description;
-  this.date = trip.date;
+  this.name             = trip.name;
+  this.description      = trip.description;
+  this.date_created     = trip.date_created;
+  this.date_of_the_trip = trip.date_of_the_trip;
+  this.end_of_the_trip  = trip.end_of_the_trip;
+  this.classification   = trip.classification;
 };
 
 Trip.create = (newTrip, result) => {
@@ -54,7 +57,7 @@ Trip.getAll = (result) => {
 
 Trip.updateById = (id, trip, result) => {
   sql.query(
-    "UPDATE trips SET name = ?, description = ?, date = ? WHERE id = ?",
+    "UPDATE trips SET name = ?, description = ?, date_created = ? WHERE id = ?",
     [trip.name, trip.description, trip.date, id],
     (err, res) => {
       if (err) {

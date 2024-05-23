@@ -7,12 +7,16 @@ exports.create = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   // Create a TripLocal
   const tripLocal = new TripLocal({
     trip_id: req.body.trip_id,
-    local_id: req.body.local_id
+    local_id: req.body.local_id,
+    nr_order: req.body.nr_order,
+    date_finish: req.body.date_finish,
+    classification: req.body.classification
   });
 
   // Save TripLocal in the database
@@ -62,6 +66,7 @@ exports.update = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   TripLocal.updateById(

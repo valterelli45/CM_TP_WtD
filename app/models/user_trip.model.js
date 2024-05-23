@@ -4,6 +4,7 @@ const sql = require("./db.js");
 const UserTrip = function(userTrip) {
   this.user_id = userTrip.user_id;
   this.trip_id = userTrip.trip_id;
+  this.main_user = userTrip.main_user;
 };
 
 UserTrip.create = (newUserTrip, result) => {

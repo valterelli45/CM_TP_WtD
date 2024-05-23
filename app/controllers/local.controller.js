@@ -7,20 +7,22 @@ exports.create = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   // Create a Local
   const local = new Local({
     name: req.body.name,
-    address: req.body.address
+    location: req.body.location,
+    description: req.body.description,
+    ref: req.body.ref
   });
 
   // Save Local in the database
   Local.create(local, (err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Local."
+        message: err.message || "Some error occurred while creating the Local."
       });
     else res.send(data);
   });
@@ -31,8 +33,7 @@ exports.findAll = (req, res) => {
   Local.getAll((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving locals."
+        message: err.message || "Some error occurred while retrieving locals."
       });
     else res.send(data);
   });
@@ -62,6 +63,7 @@ exports.update = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   Local.updateById(
@@ -105,8 +107,7 @@ exports.deleteAll = (req, res) => {
   Local.removeAll((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all locals."
+        message: err.message || "Some error occurred while removing all locals."
       });
     else res.send({ message: `All Locals were deleted successfully!` });
   });

@@ -12,7 +12,11 @@ exports.create = (req, res) => {
   // Create a Trip
   const trip = new Trip({
     name: req.body.name,
-    description: req.body.description
+    description: req.body.description,
+    date_created: req.body.date_created,
+    date_of_the_trip: req.body.date_of_the_trip,
+    end_of_the_trip: req.body.end_of_the_trip,
+    classification: req.body.classification
   });
 
   // Save Trip in the database

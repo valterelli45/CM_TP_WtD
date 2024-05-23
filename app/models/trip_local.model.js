@@ -4,6 +4,9 @@ const sql = require("./db.js");
 const TripLocal = function(tripLocal) {
   this.trip_id = tripLocal.trip_id;
   this.local_id = tripLocal.local_id;
+  this.nr_order = tripLocal.nr_order;
+  this.date_finish = tripLocal.date_finish;
+  this.classification = tripLocal.classification;
 };
 
 TripLocal.create = (newTripLocal, result) => {
@@ -52,8 +55,8 @@ TripLocal.getAll = (result) => {
 
 TripLocal.updateById = (id, tripLocal, result) => {
   sql.query(
-    "UPDATE trips_locals SET trip_id = ?, local_id = ? WHERE id = ?",
-    [tripLocal.trip_id, tripLocal.local_id, id],
+    "UPDATE trips_locals SET trip_id = ?, local_id = ?, nr_order = ?, date_finish = ?, classification = ? WHERE id = ?",
+    [tripLocal.trip_id, tripLocal.local_id, tripLocal.nr_order, tripLocal.date_finish, tripLocal.classification, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

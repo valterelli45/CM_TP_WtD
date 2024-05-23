@@ -3,7 +3,9 @@ const sql = require("./db.js");
 // Constructor
 const Local = function(local) {
   this.name = local.name;
-  this.address = local.address;
+  this.location = local.location;
+  this.description = local.description;
+  this.ref = local.ref;
 };
 
 Local.create = (newLocal, result) => {
@@ -52,8 +54,8 @@ Local.getAll = (result) => {
 
 Local.updateById = (id, local, result) => {
   sql.query(
-    "UPDATE locals SET name = ?, address = ? WHERE id = ?",
-    [local.name, local.address, id],
+    "UPDATE locals SET name = ?, location = ?, description = ?, ref = ? WHERE id = ?",
+    [local.name, local.location, local.description, local.ref, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

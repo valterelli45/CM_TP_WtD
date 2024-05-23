@@ -7,20 +7,22 @@ exports.create = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   // Create a LocalImg
   const localImg = new LocalImg({
     local_id: req.body.local_id,
-    image_url: req.body.image_url
+    image_url: req.body.image_url,
+    desc_img: req.body.desc_img,
+    data_inserted: new Date()
   });
 
   // Save LocalImg in the database
   LocalImg.create(localImg, (err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the LocalImg."
+        message: err.message || "Some error occurred while creating the LocalImg."
       });
     else res.send(data);
   });
@@ -31,8 +33,7 @@ exports.findAll = (req, res) => {
   LocalImg.getAll((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving local images."
+        message: err.message || "Some error occurred while retrieving local images."
       });
     else res.send(data);
   });
@@ -62,6 +63,7 @@ exports.update = (req, res) => {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
   }
 
   LocalImg.updateById(
@@ -105,8 +107,7 @@ exports.deleteAll = (req, res) => {
   LocalImg.removeAll((err, data) => {
     if (err)
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all local images."
+        message: err.message || "Some error occurred while removing all local images."
       });
     else res.send({ message: `All LocalImgs were deleted successfully!` });
   });
