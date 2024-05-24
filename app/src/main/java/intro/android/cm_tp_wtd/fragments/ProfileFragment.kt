@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -40,7 +41,7 @@ class ProfileFragment: Fragment() {
 
         val currentUser = auth.currentUser
 
-        val profileIcon = view.findViewById<ImageView>(R.id.profileIcon)
+        val backIcon = view.findViewById<ImageView>(R.id.backIcon)
         val profilePicture = view.findViewById<ImageView>(R.id.profilePicture)
         val editProfilePictureButton = view.findViewById<Button>(R.id.editProfilePictureButton)
         val nameEditText = view.findViewById<EditText>(R.id.nameEditText)
@@ -62,9 +63,6 @@ class ProfileFragment: Fragment() {
                         Glide.with(this)
                             .load(profileImageUrl)
                             .into(profilePicture)
-                        Glide.with(this)
-                            .load(profileImageUrl)
-                            .into(profileIcon)
                     }
                 } else {
                     Toast.makeText(requireContext(), "No user data found", Toast.LENGTH_SHORT).show()
@@ -120,6 +118,10 @@ class ProfileFragment: Fragment() {
                 val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 resultLauncher.launch(intent)
             }
+        }
+
+        backIcon.setOnClickListener{
+            findNavController().navigate(R.id.action_profileFragment_to_dashboardFragment)
         }
 
         return view

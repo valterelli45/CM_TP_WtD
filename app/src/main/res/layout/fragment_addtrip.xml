@@ -50,14 +50,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Adicionar Local" />
+                android:hint="Local" />
 
             <Button
                 android:id="@+id/addLocationButton"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Adicionar" />
+                android:background="@drawable/ic_add" />
 
         </LinearLayout>
 
