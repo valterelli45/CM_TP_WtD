@@ -30,6 +30,9 @@ class DashboardFragment: Fragment() {
         val profileButton = view.findViewById<ImageView>(R.id.profileIcon)
         val addtripButton = view.findViewById<Button>(R.id.addTripButton)
         val listtripButton = view.findViewById<ImageView>(R.id.listTripsIcon)
+        listtripButton.setOnClickListener{
+            findNavController().navigate(R.id.action_dashboardFragment_to_listTripFragment)
+        }
         addtripButton.setOnClickListener{
             val dialog = AddTripFragment()
             dialog.show(childFragmentManager, "AddTripDialogFragment")
@@ -55,10 +58,6 @@ class DashboardFragment: Fragment() {
 
         profileButton.setOnClickListener{
             findNavController().navigate(R.id.action_dashboardFragment_to_profileFragment)
-        }
-
-        listtripButton.setOnClickListener{
-            findNavController().navigate(R.id.action_dashboardFragment_to_listTripFragment)
         }
 
         return view

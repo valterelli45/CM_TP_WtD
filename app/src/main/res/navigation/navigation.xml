@@ -63,7 +63,7 @@
             app:destination="@+id/profileFragment"/>
         <action
             android:id="@+id/action_dashboardFragment_to_listTripFragment"
-            app:destination="@+id/listTripFragment"/>
+            app:destination="@+id/tripsListFragment"/>
     </fragment>
 
     <fragment
@@ -78,8 +78,11 @@
 
     <fragment
         android:id="@+id/tripsListFragment"
-        android:name="intro.android.cm_tp_wtd.fragments.TripsListFragment"
-        android:label="fragment_tripslist"
-        tools:layout="@layout/fragment_tripslist" />
-
+        android:name="intro.android.cm_tp_wtd.fragments.ListTripFragment"
+        android:label="fragment_listtrip"
+        tools:layout="@layout/fragment_listtrip">
+        <action
+            android:id="@+id/action_listTripFragment_to_dashboardFragment"
+            app:destination="@+id/dashboardFragment"/>
+    </fragment>
 </navigation>
