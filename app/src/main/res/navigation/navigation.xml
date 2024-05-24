@@ -61,6 +61,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@+id/profileFragment"/>
+        <action
+            android:id="@+id/action_dashboardFragment_to_listTripFragment"
+            app:destination="@+id/listTripFragment"/>
     </fragment>
 
     <fragment

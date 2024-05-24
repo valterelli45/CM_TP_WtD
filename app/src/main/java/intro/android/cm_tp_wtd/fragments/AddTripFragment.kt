@@ -11,9 +11,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -35,6 +37,7 @@ class AddTripFragment: DialogFragment() {
     private lateinit var locationAdapter: LocationAdapter
     private val locationList = mutableListOf<Location>()
     private val PERMISSIONS_REQUEST_CODE = 101
+    private lateinit var categorySpinner: Spinner
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +51,17 @@ class AddTripFragment: DialogFragment() {
         val addLocationButton = view.findViewById<Button>(R.id.addLocationButton)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = locationAdapter
+
+        // Configurar o Spinner de categoria
+        categorySpinner = view.findViewById(R.id.categorySpinner)
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.location_categories,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            categorySpinner.adapter = adapter
+        }
 
         val saveTripButton = view.findViewById<Button>(R.id.saveTripButton)
         saveTripButton.setOnClickListener {
@@ -68,7 +82,7 @@ class AddTripFragment: DialogFragment() {
                     "locations" to locationList.map { it.toMap() }
                 )
                 uid?.let {
-                    db.collection("trips").document(it)
+                    db.collection("trips").document(it).collection("trips").document()
                         .set(tripDoc)
                         .addOnSuccessListener {
                             Log.d(ContentValues.TAG, "Trip document successfully written!")
@@ -127,11 +141,20 @@ class AddTripFragment: DialogFragment() {
             imageRef.downloadUrl.addOnSuccessListener { uri ->
                 val imageUrl = uri.toString()
                 val locationName = view?.findViewById<EditText>(R.id.locationEditText)?.text.toString()
+                val description = view?.findViewById<EditText>(R.id.locationDescriptionEditText)?.text.toString()
+                val locationRatingBar = view?.findViewById<RatingBar>(R.id.locationRatingBar)
+                val locationRating = locationRatingBar?.rating ?: 0.0f // Provide a default value of 0.0f if locationRatingBar is null
+                val category = view?.findViewById<Spinner>(R.id.categorySpinner)?.selectedItem.toString()
+                val date = view?.findViewById<EditText>(R.id.locationDateEditText)?.text.toString()
+
                 if (locationName.isNotEmpty()) {
-                    val location = Location(locationName, imageUrl)
+                    val location = Location(locationName, imageUrl, description, locationRating, category, date)
                     locationList.add(location)
                     locationAdapter.notifyDataSetChanged()
                     view?.findViewById<EditText>(R.id.locationEditText)?.text?.clear()
+                    view?.findViewById<EditText>(R.id.locationDescriptionEditText)?.text?.clear()
+                    view?.findViewById<EditText>(R.id.locationDateEditText)?.text?.clear()
+                    locationRatingBar?.rating = 0.0f // Reset the rating bar
                 } else {
                     Toast.makeText(requireContext(), "Por favor, insira o nome do local.", Toast.LENGTH_SHORT).show()
                 }

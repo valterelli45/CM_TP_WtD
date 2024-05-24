@@ -19,8 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Profile icon -->
-
     <!-- Profile Picture -->
     <ImageView
         android:id="@+id/profilePicture"
@@ -114,7 +112,7 @@
 
         <!-- Left icon in bottom nav -->
         <ImageView
-            android:id="@+id/navIconLeft"
+            android:id="@+id/listTripsIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"

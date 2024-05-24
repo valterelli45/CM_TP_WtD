@@ -5,46 +5,30 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#EDEDED"
-    tools:context=".fragments.DashboardFragment">
+    tools:context=".fragments.ListTripFragment">
 
     <!-- Menu icon -->
     <ImageView
-        android:id="@+id/menuIcon"
+        android:id="@+id/backIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/menu_icon"
-        android:src="@drawable/ic_menu"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Profile icon -->
-    <ImageView
-        android:id="@+id/profileIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTrips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/profile_icon"
-        android:src="@drawable/ic_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/contentArea"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="64dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/menuIcon"
-        app:layout_constraintVertical_bias="0.0"
-        tools:navGraph="@navigation/navigation" />
+        app:layout_constraintTop_toBottomOf="@id/backIcon"/>
 
+    <!-- Bottom navigation bar -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomNavBar"
         android:layout_width="0dp"
@@ -69,7 +53,7 @@
 
         <!-- Center button in bottom nav -->
         <Button
-            android:id="@+id/addTripButton"
+            android:id="@+id/navButtonCenter"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/ic_add"
