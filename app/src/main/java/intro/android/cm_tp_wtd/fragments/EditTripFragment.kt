@@ -31,19 +31,20 @@ import intro.android.cm_tp_wtd.adapters.LocationAdapter
 import intro.android.cm_tp_wtd.models.Location
 import java.util.UUID
 
-class AddTripFragment: DialogFragment() {
+class EditTripFragment : DialogFragment() {
     private lateinit var auth: FirebaseAuth
     private val db by lazy { (activity as MainActivity).db }
     private lateinit var locationAdapter: LocationAdapter
     private val locationList = mutableListOf<Location>()
     private val PERMISSIONS_REQUEST_CODE = 101
     private lateinit var categorySpinner: Spinner
+    private var tripId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_addtrip, container, false)
+        val view = inflater.inflate(R.layout.fragment_edittrip, container, false)
         auth = FirebaseAuth.getInstance()
 
         locationAdapter = LocationAdapter(locationList) { location ->
@@ -56,7 +57,6 @@ class AddTripFragment: DialogFragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = locationAdapter
 
-        // Configurar o Spinner de categoria
         categorySpinner = view.findViewById(R.id.categorySpinner)
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -66,6 +66,8 @@ class AddTripFragment: DialogFragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             categorySpinner.adapter = adapter
         }
+
+        loadTripData(view) // Carregar dados da viagem
 
         val saveTripButton = view.findViewById<Button>(R.id.saveTripButton)
         saveTripButton.setOnClickListener {
@@ -86,15 +88,17 @@ class AddTripFragment: DialogFragment() {
                     "locations" to locationList.map { it.toMap() }
                 )
                 uid?.let {
-                    db.collection("trips").document(it).collection("trips").document()
-                        .set(tripDoc)
-                        .addOnSuccessListener {
-                            Log.d(ContentValues.TAG, "Trip document successfully written!")
-                            dismiss()
-                        }.addOnFailureListener { e ->
-                            Log.w(ContentValues.TAG, "Error writing trip document", e)
-                            Toast.makeText(requireContext(), "Erro ao salvar os dados da viagem.", Toast.LENGTH_SHORT).show()
-                        }
+                    tripId?.let { id ->
+                        db.collection("trips").document(it).collection("trips").document(id)
+                            .update(tripDoc)
+                            .addOnSuccessListener {
+                                Log.d(ContentValues.TAG, "Trip document successfully updated!")
+                                dismiss()
+                            }.addOnFailureListener { e ->
+                                Log.w(ContentValues.TAG, "Error updating trip document", e)
+                                Toast.makeText(requireContext(), "Erro ao atualizar os dados da viagem.", Toast.LENGTH_SHORT).show()
+                            }
+                    }
                 }
             } else {
                 Toast.makeText(requireContext(), "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
@@ -112,7 +116,6 @@ class AddTripFragment: DialogFragment() {
             }
         }
 
-        // Solicitar permissões e abrir galeria de imagens
         addLocationButton.setOnClickListener {
             if (checkAndRequestPermissions()) {
                 val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -121,6 +124,38 @@ class AddTripFragment: DialogFragment() {
         }
 
         return view
+    }
+
+    private fun loadTripData(view: View) {
+        val uid = auth.currentUser?.uid
+        uid?.let {
+            tripId?.let { id ->
+                db.collection("trips").document(it).collection("trips").document(id).get()
+                    .addOnSuccessListener { document ->
+                        if (document != null) {
+                            val tripName = document.getString("name")
+                            val tripDescription = document.getString("description")
+                            val tripDate = document.getString("date")
+                            val tripRating = document.getDouble("rating")?.toFloat()
+                            val locations = document.get("locations") as? List<Map<String, Any>>
+
+                            view.findViewById<EditText>(R.id.tripNameEditText).setText(tripName)
+                            view.findViewById<EditText>(R.id.tripDescriptionEditText).setText(tripDescription)
+                            view.findViewById<EditText>(R.id.tripDateEditText).setText(tripDate)
+                            view.findViewById<RatingBar>(R.id.tripRatingBar).rating = tripRating ?: 0f
+
+                            locations?.forEach { locationData ->
+                                val location = Location.fromMap(locationData)
+                                locationList.add(location)
+                            }
+                            locationAdapter.notifyDataSetChanged()
+                        }
+                    }.addOnFailureListener { e ->
+                        Log.w(ContentValues.TAG, "Error getting trip document", e)
+                        Toast.makeText(requireContext(), "Erro ao carregar os dados da viagem.", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
     }
 
     private fun checkAndRequestPermissions(): Boolean {
@@ -147,7 +182,7 @@ class AddTripFragment: DialogFragment() {
                 val locationName = view?.findViewById<EditText>(R.id.locationEditText)?.text.toString()
                 val description = view?.findViewById<EditText>(R.id.locationDescriptionEditText)?.text.toString()
                 val locationRatingBar = view?.findViewById<RatingBar>(R.id.locationRatingBar)
-                val locationRating = locationRatingBar?.rating ?: 0.0f // Provide a default value of 0.0f if locationRatingBar is null
+                val locationRating = locationRatingBar?.rating ?: 0.0f
                 val category = view?.findViewById<Spinner>(R.id.categorySpinner)?.selectedItem.toString()
                 val date = view?.findViewById<EditText>(R.id.locationDateEditText)?.text.toString()
 
@@ -165,6 +200,23 @@ class AddTripFragment: DialogFragment() {
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(requireContext(), "Falha ao carregar imagem: ${exception.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    companion object {
+        fun newInstance(tripId: String): EditTripFragment {
+            val fragment = EditTripFragment()
+            val args = Bundle()
+            args.putString("tripId", tripId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            tripId = it.getString("tripId")
         }
     }
 }

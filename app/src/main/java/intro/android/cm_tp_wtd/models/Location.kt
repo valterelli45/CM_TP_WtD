@@ -1,7 +1,5 @@
 package intro.android.cm_tp_wtd.models
 
-import java.util.Date
-
 data class Location(
     val name: String,
     val imageUrl: String,
@@ -19,5 +17,18 @@ data class Location(
             "category" to category,
             "date" to date
         )
+    }
+
+    companion object {
+        fun fromMap(map: Map<String, Any>): Location {
+            return Location(
+                name = map["name"] as String,
+                imageUrl = map["imageUrl"] as String,
+                description = map["description"] as String,
+                rating = (map["rating"] as Double).toFloat(),
+                category = map["category"] as String,
+                date = map["date"] as String
+            )
+        }
     }
 }

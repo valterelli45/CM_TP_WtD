@@ -10,7 +10,10 @@ import com.bumptech.glide.Glide
 import intro.android.cm_tp_wtd.R
 import intro.android.cm_tp_wtd.models.Location
 
-class LocationAdapter(private val locations: List<Location>) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
+class LocationAdapter(
+    private val locations: MutableList<Location>,
+    private val onRemove: (Location) -> Unit
+) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location, parent, false)
@@ -26,13 +29,18 @@ class LocationAdapter(private val locations: List<Location>) : RecyclerView.Adap
         return locations.size
     }
 
-    class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val locationNameTextView: TextView = itemView.findViewById(R.id.locationNameTextView)
         private val locationImageView: ImageView = itemView.findViewById(R.id.locationImageView)
+        private val removeLocationButton: ImageView = itemView.findViewById(R.id.removeLocationButton)
 
         fun bind(location: Location) {
             locationNameTextView.text = location.name
             Glide.with(itemView.context).load(location.imageUrl).into(locationImageView)
+
+            removeLocationButton.setOnClickListener {
+                onRemove(location)
+            }
         }
     }
 }
