@@ -22,12 +22,12 @@ data class Location(
     companion object {
         fun fromMap(map: Map<String, Any>): Location {
             return Location(
-                name = map["name"] as String,
-                imageUrl = map["imageUrl"] as String,
-                description = map["description"] as String,
-                rating = (map["rating"] as Double).toFloat(),
-                category = map["category"] as String,
-                date = map["date"] as String
+                name = map["name"] as? String ?: "",
+                imageUrl = map["imageUrl"] as? String ?: "",
+                description = map["description"] as? String ?: "",
+                rating = (map["rating"] as? Double)?.toFloat() ?: 0f,
+                category = map["category"] as? String ?: "",
+                date = map["date"] as? String ?: ""
             )
         }
     }
