@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Editar Viagem"
+            android:text="@string/edit_trip"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_gravity="center"
             android:paddingBottom="16dp" />
@@ -23,13 +23,13 @@
             android:id="@+id/tripNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome da Viagem" />
+            android:hint="@string/trip_name" />
 
         <EditText
             android:id="@+id/tripDescriptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição"
+            android:hint="@string/description"
             android:inputType="textMultiLine"
             android:lines="3" />
 
@@ -37,13 +37,13 @@
             android:id="@+id/tripDateEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data"
+            android:hint="@string/date"
             android:inputType="date" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Locais"
+            android:text="@string/locations"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_gravity="center"
             android:paddingBottom="16dp"
@@ -52,15 +52,15 @@
         <EditText
             android:id="@+id/locationEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="Local" />
+            android:hint="@string/location" />
 
         <EditText
             android:id="@+id/locationDescriptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição do local"
+            android:hint="@string/location_description"
             android:inputType="textMultiLine"
             android:lines="3"/>
 
@@ -68,7 +68,7 @@
             android:id="@+id/locationDateEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data da visita ao local"
+            android:hint="@string/location_visit_date"
             android:inputType="date" />
 
         <Spinner
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Classificação Local"
+            android:text="@string/location_rating"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="16dp" />
 
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Classificação Viagem"
+            android:text="@string/trip_rating"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="16dp" />
 
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Salvar Viagem"
+            android:text="@string/save_trip"
             android:layout_marginTop="16dp" />
     </LinearLayout>
 

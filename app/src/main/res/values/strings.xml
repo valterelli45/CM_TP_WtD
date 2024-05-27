@@ -15,18 +15,52 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="save">Save</string>
     <string name="remove_location">Remove Location</string>
+    <string name="login">Login</string>
+    <string name="dont_have_account">Don´t have an account?</string>
+    <string name="create_account">Click Here to create one!</string>
+    <string name="new_trip">New Trip</string>
+    <string name="trip_name">Trip Name</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="locations">Locations</string>
+    <string name="location">Location</string>
+    <string name="location_description">Location Description</string>
+    <string name="location_visit_date">Location Visit Date</string>
+    <string name="location_rating">Location Rating</string>
+    <string name="trip_rating">Trip Rating</string>
+    <string name="save_trip">Save Trip</string>
+    <string name="edit_trip">Edit Trip</string>
+    <string name="explore">Explore the World with What to do.</string>
+    <string name="backgroundimage">BackGround Image</string>
+    <string name="current_pass">Current Password</string>
+    <string name="new_pass">New Password</string>
+    <string name="change_pass">Change Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_account">Already have an account?</string>
+    <string name="click_login">Click Here to login!</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="museum">Museum</string>
+    <string name="garden">Garden</string>
+    <string name="park">Park</string>
+    <string name="beach">Beach</string>
+    <string name="caffe">Caffe</string>
+    <string name="bar">Bar</string>
+    <string name="hotel">Hotel</string>
+    <string name="theatre">Theatre</string>
+    <string name="supermarket">SuperMarket</string>
+    <string name="language">EN</string>
 
     <!-- Array de categorias -->
     <string-array name="location_categories">
-        <item>Restaurante</item>
-        <item>Museu</item>
-        <item>Jardim</item>
-        <item>Parque</item>
-        <item>Praia</item>
-        <item>Café</item>
-        <item>Bar</item>
-        <item>Hotel</item>
-        <item>Teatro</item>
-        <item>Supermercado</item>
+        <item>@string/restaurant</item>
+        <item>@string/museum</item>
+        <item>@string/garden</item>
+        <item>@string/park</item>
+        <item>@string/beach</item>
+        <item>@string/caffe</item>
+        <item>@string/bar</item>
+        <item>@string/hotel</item>
+        <item>@string/theatre</item>
+        <item>@string/supermarket</item>
     </string-array>
 </resources>
