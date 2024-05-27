@@ -11,8 +11,7 @@ import intro.android.cm_tp_wtd.R
 import intro.android.cm_tp_wtd.models.Dashboard
 
 class DashboardAdapter(
-    private val dashboard: MutableList<Dashboard>,
-    private val onRemove: (Dashboard) -> Unit
+    private val dashboard: MutableList<Dashboard>
 ) : RecyclerView.Adapter<DashboardAdapter.DashboardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DashboardViewHolder {
@@ -34,7 +33,6 @@ class DashboardAdapter(
         private val tripTitleTextView: TextView = itemView.findViewById(R.id.tvTitle)
         private val tripDateTextView: TextView = itemView.findViewById(R.id.tvDate)
         private val tripRatingTextView: TextView = itemView.findViewById(R.id.tvRating)
-        private val createdByIcon: ImageView = itemView.findViewById(R.id.createdByIcon)
         private val createdByTextView: TextView = itemView.findViewById(R.id.tvCreatedBy)
 
         fun bind(dashboard: Dashboard) {
@@ -44,8 +42,6 @@ class DashboardAdapter(
             createdByTextView.text = dashboard.username ?: ""
 
             Glide.with(itemView.context).load(dashboard.imageUrl).into(tripImageView)
-
-            // Add remove functionality if needed
         }
     }
 }

@@ -7,7 +7,4 @@ import retrofit2.http.GET
 interface ApiService {
     @GET("trips")
     fun getTrips(): Call<List<Dashboard>>
-
-    @GET("trips-img")
-    fun getTripsImages(): Call<List<Dashboard>>
 }

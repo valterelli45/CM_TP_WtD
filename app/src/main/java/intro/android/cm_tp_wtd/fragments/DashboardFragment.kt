@@ -47,9 +47,7 @@ class DashboardFragment : Fragment() {
         // Set up RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewTrips)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        dashboardAdapter = DashboardAdapter(dashboardList) { dashboard ->
-            // Handle remove action if needed
-        }
+        dashboardAdapter = DashboardAdapter(dashboardList)
         recyclerView.adapter = dashboardAdapter
 
         // Load trips data from API
