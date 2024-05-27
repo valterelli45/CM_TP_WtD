@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="@android:color/holo_blue_light"
-        android:text="Change Password"
+        android:text="@string/change_pass"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
